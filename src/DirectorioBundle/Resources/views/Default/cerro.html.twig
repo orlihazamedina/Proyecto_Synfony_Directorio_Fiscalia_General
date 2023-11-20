@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+       
+
+<div class="container">
+    <div class="container col-md-8"><h3 ><strong >TELEFONOS CERRO</strong></h3>
+    
+    
+   
+    
+    </div> <div class="btn-group col-md-3">
+  <button type="button" class="btn btn-primary " >Seleccione la Fiscalia Municipal</button>
+  <button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+ <ul class="dropdown-menu">
+ 
+    <li><a href="{{ path('directorio_lisa') }}">Lisa</a></li>
+    <li><a href="{{ path('directorio_regla') }}">Regla</a></li>
+    <li><a href="{{ path('directorio_guanabacoa') }}">Guanabacoa</a></li>
+    
+    <li><a href="{{ path('directorio_divico') }}">Divico</a></li>
+    <li><a href="{{ path('directorio_hv') }}">Habana Vieja</a></li>
+    <li><a href="{{ path('directorio_centrohabana') }}">Centro Habana</a></li>
+    <li><a href="{{ path('directorio_cotorro') }}">Cotorro</a></li>
+    
+    <li><a href="{{ path('directorio_marianao') }}">Marianao</a></li>
+    <li><a href="{{ path('directorio_boyeros') }}">Boyeros</a></li>
+    
+    
+    <li><a href="{{ path('directorio_arroyo') }}">Arroyo Naranjo</a></li>
+    <li><a href="{{ path('directorio_sanmiguel') }}">San Miguel del Padron</a></li>
+    <li><a href="{{ path('directorio_cerro') }}">Cerro</a></li>
+    
+    <li><a href="#{{ path('directorio_10octubre') }}">10 de Octubre</a></li>
+    <li><a href="{{ path('directorio_heste') }}">Habana del Este</a></li>
+    <li><a href="#">Playa</a></li>
+    
+    <li><a href="{{ path('directorio_plaza') }}">Plaza</a></li>
+
+
+
+
+  </ul>
+
+  
+</div>
+    
+<div class="col-md-12">
+ <span class="zoom" id="ex1" style="position: relative; overflow: hidden;">
+ 
+     <img src="{{ asset('public/css/cerro.jpg') }}" alt="Daisy on the Ohoopee" width="300" class="img-responsive img-rounded">
+  </div>
+ 
+
+</div><div class="container"><center><h4>Direccion: San pablo e/n Santa Catalina y Falgueras </h4></center></div>
+
+<div class="panel-heading" > <table class="table table-striped table-hover table-condensed"> 
+                
+             
+
+<tr> <td><center></center></td> <td ><center>878 0896 </center></td></center><td><center></center></td> <td><center></center></td>
+			                 
+				               
+                </tr> 
+
+<tr> <td><center>  </center></td> <td ><center>878 0897</center></td></center><td><center></center></td> <td><center></center></td>
+			                 
+				               
+                </tr> 
+                
+                <tr> <td><center>  </center></td> <td ><center>878 38 32</center></td></center><td><center></center></td> <td><center></center></td>
+			                 
+				               
+                </tr> 
+                
+                  </tr> 
+                
+                <tr> <td><center>  </center></td> <td ><center>878 2972</center></td></center><td><center></center></td> <td><center></center></td>
+			                 
+				               
+                </tr> 
+                
+                
+              
+                
+                
+               
+                
+</table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- /.row --><br><br><br><br><br><br><br></section>
+
+
+
+<footer><div class="container"><h6>Fiscalia Provincial de la Republica</h6></div></footer>
+
+
+{% endblock %}
+
+{% block javascripts %}
+             
+          {{ parent() }}
+    
+         
+         
+           
+           <script>
+           if ($ && $.fn.zoom) {
+    $('#ex1').zoom();
+    $('#ex2').zoom({ on:'grab' });
+  }
+                </script>
+             
+               
+               
+               
+   
+   {% endblock %}

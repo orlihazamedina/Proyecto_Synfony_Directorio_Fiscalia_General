@@ -1,0 +1,61 @@
+header{
+background:#2c3e50;
+color:#fff;
+}
+body{
+background:#2c3e50;
+color:#fff;
+}
+
+
+section{
+    
+    background:#ffffff;
+   color: #000; 
+    
+}
+
+
+#gu{
+    
+ position:absolute;
+ top: 4px;
+left: 800px;
+
+ }   
+
+ #uy{
+    
+ position:absolute;
+ right: 20px;
+ top: 4px;
+
+
+ }   
+ #ty{
+    
+ position:absolute;
+
+ top: 28px;
+
+
+ }   
+
+
+#password{
+    
+ position:absolute;
+
+ left:  2px;
+
+
+ }  	
+ 
+ #loki{
+    
+ position:absolute;
+
+ right:   -77px;
+top: 0px;
+
+ }  	

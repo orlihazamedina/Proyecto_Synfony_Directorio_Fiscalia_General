@@ -1,0 +1,96 @@
+directorio_homepage:
+    path:     /hello
+
+    defaults: { _controller: DirectorioBundle:Default:index }
+    
+directorio_buscar:
+    path:     /buscar
+    defaults: { _controller: DirectorioBundle:Default:find }
+    
+directorio_telefono:
+    path:     /telefono
+    defaults: { _controller: DirectorioBundle:Default:telefono }
+    
+ 
+directorio_regla:
+    path:     /regla
+    defaults: { _controller: DirectorioBundle:Default:regla}    
+    
+    
+directorio_cotorro:
+    path:     /cotorro
+    defaults: { _controller: DirectorioBundle:Default:cotorro} 
+    
+    
+directorio_sanmiguel:
+    path:     /sanmiguel
+    defaults: { _controller: DirectorioBundle:Default:sanmiguel}   
+    
+    
+directorio_centrohabana:
+    path:     /centrohabana
+    defaults: { _controller: DirectorioBundle:Default:centrohabana }
+    
+directorio_divico:
+    path:     /divico
+    defaults: { _controller: DirectorioBundle:Default:divico }
+    
+directorio_pasword:
+    path:     /pasword
+    defaults: { _controller: DirectorioBundle:Default:pasword}
+    
+directorio_hv:
+    path:     /hv
+    defaults: { _controller: DirectorioBundle:Default:hv }
+    
+directorio_guanabacoa:
+    path:     /guanabacoa
+    defaults: { _controller: DirectorioBundle:Default:guanabacoa}
+    
+directorio_lisa:
+    path:     /lisa
+    defaults: { _controller: DirectorioBundle:Default:lisa}
+    
+    
+directorio_10octubre:
+    path:     /octubre
+    defaults: { _controller: DirectorioBundle:Default:octubre}
+directorio_boyeros:
+    path:     /boyeros
+    defaults: { _controller: DirectorioBundle:Default:boyeros}
+    
+directorio_arroyo:
+    path:     /arroyo
+    defaults: { _controller: DirectorioBundle:Default:arroyo}
+    
+directorio_cerro:
+    path:     /cerro
+    defaults: { _controller: DirectorioBundle:Default:cerro}
+    
+directorio_marianao:
+    path:     /marianao
+    defaults: { _controller: DirectorioBundle:Default:marianao}
+    
+directorio_plaza:
+    path:     /plaza
+    defaults: { _controller: DirectorioBundle:Default:plaza}
+    
+directorio_heste:
+    path:     /heste
+    defaults: { _controller: DirectorioBundle:Default:heste}
+    
+directorio_usuario:
+    path:     /usuario/{usuario}/{nombre}/{oficina}
+    defaults: { _controller: DirectorioBundle:Default:usuario }
+
+directorio_guardar:
+    path:     /guardar
+    defaults: { _controller: DirectorioBundle:Default:guardar }
+    
+directorio_delete:
+    path:     /delete/{id}
+    defaults: { _controller: DirectorioBundle:Default:delete }
+    
+directorio_filtrar:
+    path:     /filtrar/{tipo}
+    defaults: { _controller: DirectorioBundle:Default:filtrar }

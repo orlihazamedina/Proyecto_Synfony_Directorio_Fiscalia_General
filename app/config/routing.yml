@@ -1,0 +1,11 @@
+directorio:
+    resource: "@DirectorioBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+uno_main:
+    resource: "@UnoMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,349 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}" />
+           
+ 
+    
+<link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('public/css/pikaday-package.css') }}"> 
+    
+      <link rel="stylesheet" href="{{ asset('public/css/font-awesome.css') }}" />
+     <link rel="stylesheet" href="{{ asset('public/css/micss.css') }}" />
+               <link rel="stylesheet" href="{{ asset('public/css/miestilo.css') }}" />
+ <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}" />
+ <link rel="stylesheet" href="{{ asset('public/css/admin.css') }}" />
+ 
+ 
+
+        {% endblock %}
+{% block body %}
+	
+
+
+   
+
+    <!--\\\\\\\left_nav end \\\\\\-->
+    
+      <!--\\\\\\\ contentpanel start\\\\\\-->
+      
+      <div class="container clear_both padding_fix">
+        <!--\\\\\\\ container  start \\\\\\-->
+        <div class="page-content">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="profile_bg">
+                <div class="user-profile-sidebar">
+               
+                  <div class="row">
+                    <div class="col-md-8"><img src="{{ asset('public/css/' ~usuario~ '.jpg') }}"  width="150" height="150" ></div>
+                       
+                    <div class="col-md-9" >
+                      <div class="row">
+                        
+                         <br>
+                          <address>
+                          <strong>Nombre</strong><br>
+                          <abbr >{{nombre}}</abbr>
+                          </address>
+                          <address>
+                          <strong>Usuario</strong><br>
+                          <a >{{usuario}}</a>
+                          </address>
+                          
+                        </div>
+                    </div>
+                  </div>
+                </div>
+             
+             
+         
+               
+              
+              </div>
+              <!--/block-web-->
+             
+             
+          
+            </div>
+            <!--/col-md-4-->
+            <div class="col-md-7">
+              <div class="block-web full">
+                <ul class="nav nav-tabs nav-justified nav_bg">
+                  <li class="active"><a href="#about" data-toggle="tab"> Perfil</a></li>
+                         <li class=""><a href="#user-activities" data-toggle="tab">Actividades <span class="badge">{{cantidad| default('')}}</span></a></li>
+                       {%if app.user.role is  defined and app.user.role=="ROLE_ADMIN"%}
+                  <li class=""><a href="#edit-profile" data-toggle="tab"> Agregar Actividad</a></li>
+           
+            {%endif%}
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane animated fadeInRight active" id="about">
+                    <div class="user-profile-content">
+                      <h5><strong>Cargo/Ocupacion</strong></h5>
+                      <p>  </p>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h5><strong>Contacto</strong> </h5>
+                          <address>
+                          <strong>Telefono</strong><br>
+                          <abbr title="Phone"></abbr>
+                          </address>
+                          <address>
+                          <strong>Correo</strong><br>
+                          <a >{{usuario}}@fpch.fgr.gob.cu</a>
+                          </address>
+                          <address>
+                          <strong>Direccion</strong><br>
+                          <a></a>
+                          </address>
+                        </div>
+                        <div class="col-sm-6">
+                          <h5><strong>Unidad/Dpto</strong> </h5>
+                          <a> <p>{{oficina}}</p></a>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane animated fadeInRight" id="edit-profile">
+                    <div class="user-profile-content">
+                     <form role="form" action="{{ path('directorio_guardar') }}" method="POST">
+                        <div class="form-group">
+                        
+                            <select class="selectpicker" name='unidad' id="unidad" required>  <option>Seleccione un Componente</option>
+                                <option value="Componente de Preparacion y Superacion Tecnica Profesional" >Componente de Preparacion y Superacion Tecnica Profesional</option>
+                                                                                <option value="Componente de Preparacion y Superacion para la Defensa" >Componente de Preparacion y Superacion para la Defensa</option>
+                                                                                <option value="Componente de Preparacion y Superacion Economica" >Componente de Preparacion y Superacion Economica</option>
+                                                                                <option value="Componente de Preparacion y Superacion en Direccion">Componente de Preparacion y Superacion en Direccion</option>
+                                                                                 <option value="Componente de Preparacion y Superacion Politica Ideologica" >Componente de Preparacion y Superacion Politica Ideologica</option></select>                                                   
+								   
+                                           
+                        </div>
+                        <div class="form-group">
+                         
+                     
+  <input class="form-control" id="entradaqueja"  name='entradaqueja' placeholder="Fecha" required>
+   
+                                                </div>
+
+                        <div class="form-group">
+                        
+                            <textarea class="form-control" id="about" name="about" style="height: 90px;" placeholder="Inserte Actividad" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Insertar</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="user-activities">
+                    <ul class="media-list">
+                        {% for producto in producto  %}  
+                       
+                  
+                      <li class="media"> <a href="#">
+                              <p style="color: #00581E">{{loop.index}}- {{producto.tarea}}</p>
+                        <p><strong>{{producto.componente}}</strong> </p> <br>
+                          <i>{{producto.fecha|date('d-m-Y')}}        {%if app.user.role is  defined and app.user.role=="ROLE_ADMIN"%}  <a href="{{ path('directorio_delete', { id:producto.id }) }}" ><p class="glyphicon glyphicon-trash "></p></a>     {%endif%}</i>
+                       
+                              {% endfor  %}  
+                   
+                    </ul>
+                  </div>
+                  <div class="tab-pane" id="mymessage">
+                    <ul class="media-list">
+                      <li class="media"> <a class="pull-left" href="#"><img src="images/gg.png" /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#fakelink">John Doe</a> <small>Just now</small></h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        </div>
+                      </li>
+                      <li class="media"> <a class="pull-left" href="#"><img src="images/gg.png" /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#fakelink">Tim Southee</a> <small>Yesterday at 04:00 AM</small></h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus</p>
+                        </div>
+                      </li>
+                      <li class="media"> <a class="pull-left" href="#"><img src="images/gg.png" /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#fakelink">Kane Williamson</a> <small>January 17, 2014 05:35 PM</small></h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        </div>
+                      </li>
+                      <li class="media"> <a class="pull-left" href="#"><img src="images/gg.png" /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#fakelink">Lonwabo Tsotsobe</a> <small>January 17, 2014 05:35 PM</small></h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        </div>
+                      </li>
+                      <li class="media"> <a class="pull-left" href="#"><img src="images/gg.png" /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#fakelink">Dale Steyn</a> <small>January 17, 2014 05:35 PM</small></h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        </div>
+                      </li>
+                      <li class="media"> <a class="pull-left" href="#"><img src="images/gg.png" /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#fakelink">John Doe</a> <small>Just now</small></h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!--/tab-content-->
+              </div>
+              <!--/block-web-->
+            </div>
+            <!--/col-md-8-->
+          </div>
+          <!--/row-->
+        </div>
+      </div>
+      <!--\\\\\\\ container  end \\\\\\-->
+    
+    <!--\\\\\\\ content panel end \\\\\\-->
+ 
+<!--\\\\\\\ wrapper end\\\\\\-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Compose New Task</h4>
+      </div>
+      <div class="modal-body"> content </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- sidebar chats -->
+<nav class="atm-spmenu atm-spmenu-vertical atm-spmenu-right side-chat">
+	<div class="header">
+    <input type="text" class="form-control chat-search" placeholder=" Search">
+  </div>
+  <div href="#" class="sub-header">
+    <div class="icon"><i class="fa fa-user"></i></div> <p>Online (4)</p>
+  </div>
+  <div class="content">
+    <p class="title">Family</p>
+    <ul class="nav nav-pills nav-stacked contacts">
+      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Steven Smith</a></li>
+      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> John Doe</a></li>
+      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Michael Smith</a></li>
+      <li class="busy"><a href="#"><i class="fa fa-circle-o"></i> Chris Rogers</a></li>
+    </ul>
+    
+    <p class="title">Friends</p>
+    <ul class="nav nav-pills nav-stacked contacts">
+      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Vernon Philander</a></li>
+      <li class="outside"><a href="#"><i class="fa fa-circle-o"></i> Kyle Abbott</a></li>
+      <li><a href="#"><i class="fa fa-circle-o"></i> Dean Elgar</a></li>
+    </ul>   
+    
+    <p class="title">Work</p>
+    <ul class="nav nav-pills nav-stacked contacts">
+      <li><a href="#"><i class="fa fa-circle-o"></i> Dale Steyn</a></li>
+      <li><a href="#"><i class="fa fa-circle-o"></i> Morne Morkel</a></li>
+    </ul>
+    
+  </div>
+  <div id="chat-box">
+    <div class="header">
+      <span>Richard Avedon</span>
+      <a class="close"><i class="fa fa-times"></i></a>    </div>
+    <div class="messages nano nscroller has-scrollbar">
+      <div class="content" tabindex="0" style="right: -17px;">
+        <ul class="conversation">
+          <li class="odd">
+            <p>Hi John, how are you?</p>
+          </li>
+          <li class="text-right">
+            <p>Hello I am also fine</p>
+          </li>
+          <li class="odd">
+            <p>Tell me what about you?</p>
+          </li>
+          <li class="text-right">
+            <p>Sorry, I'm late... see you</p>
+          </li>
+          <li class="odd unread">
+            <p>OK, call me later...</p>
+          </li>
+        </ul>
+      </div>
+    <div class="pane" style="display: none;"><div class="slider" style="height: 20px; top: 0px;"></div></div></div>
+    <div class="chat-input">
+      <div class="input-group">
+        <input type="text" placeholder="Enter a message..." class="form-control">
+        <span class="input-group-btn">
+        <button class="btn btn-danger" type="button">Send</button>
+        </span>      </div>
+    </div>
+  
+</nav>
+<!-- /sidebar chats -->   
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        {% endblock %}
+        {% block javascripts %}
+        
+   <script src="{{ asset('public/js/jquery-1.11.3.min.js') }}"></script>
+            <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+           
+<script src="{{ asset('public/js/pikaday-responsive-modernizr.js') }}"></script>
+<script src="{{ asset('public/js/moment.min.js') }}"></script>
+<script src="{{ asset('public/js/pikaday.min.js') }}"></script>
+<script src="{{ asset('public/js/pikaday-responsive.js') }}"></script>
+  <script src="{{ asset('public/js/common-script.js') }}"></script>
+            <script src="{{ asset('public/js/jquery.slimscroll.min.js') }}"></script>
+             <script src="{{ asset('public/js/jPushMenu.js') }}"></script>
+            <script src="{{ asset('public/js/side-chats.js') }}"></script>
+        <script>
+
+var $date1 = $("#entradaqueja");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+  
+  var $date1 = $("#circular_mainbundle_queja_fdecicion");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+ 
+ 
+  
+ 
+  $("#clear").click(function() {
+    instance3.setDate(null);
+  });
+
+  $("#today").click(function() {
+    instance3.setDate(moment());
+  });
+  
+   
+  
+  
+  
+  </script>
+        
+        {% endblock %}

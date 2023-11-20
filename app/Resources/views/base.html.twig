@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('public/css/micss.css') }}" />
+               <link rel="stylesheet" href="{{ asset('public/css/miestilo.css') }}" />
+                <link rel="stylesheet" href="{{ asset('public/css/sb-admin.css') }}" />
+                <link rel="stylesheet" href="{{ asset('public/css/admino.css') }}" />
+                     <link rel="stylesheet" href="{{ asset('public/css/app.css') }}" />
+        
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        
+        <header>
+<div div class="container">
+<h1>DIRECTORIO FISCALIA PROVINCIAL</h1>
+
+
+
+{%if app.user.role is  defined and app.user.role=="ROLE_ADMIN"%}
+<div class="col-md-offset-10" id="uy">
+					<li id="nav-dropdown" class=" nav-dropdown dropdown ">
+                                            <a class="dropdown-toggle" href="#nav-dropdown" data-toggle="dropdown" data-original-tittle="" style="color: #ffffff">
+            				Bienvenido {{app.user.nombre}}   <i class="glyphicon glyphicon-user icon-lg">
+            					
+            				</i>	
+            				<span class="caret"></span> 
+            				<span class="total-badge badge hidden">0</span>
+            				<ul class="dropdown-menu" role="menu">
+    							
+    							
+                                                         
+                                         
+    							<li><a href="{{ path('uno_main_logout') }}"><i class="glyphicon glyphicon-log-out"></i> Salir</a></li>
+  							</ul>
+
+            			</a>
+            		</li>
+            		</div>
+
+                                                        {%elseif true%}
+<div class=" col-md-7 " id="gu">
+			  				<form class="form-inline" method="post" action="{{ path('uno_main_login_check') }}">
+							
+								<fieldset>
+									<div class="form-group col-sm-3">
+										<label class="sr-only" for="exampleInputEmail2">Email address</label>
+										<input class="form-control" id="username"  name="_username" value="{{ last_username| default('') }}" placeholder="Usuario" required>
+									</div>
+									<div class="form-group  col-sm-3">
+										<label class="sr-only" for="exampleInputPassword2">Password</label>
+										<input class="form-control" id="password" class="form-control" name="_password" placeholder="Contraseña" type="password" required>
+									</div>
+									{% if error| default('') %}
+                                                                            <div   id="ty">
+             
+                    
+                                                                                <center>   <h5  style="color: #ffffff">     Usuario o Contraseña invalidos</h5></center>
+                                                </div>
+            {% endif %}
+ <input type="hidden" name="_target_path" value="directorio_homepage" />
+									<button type="submit" class="btn btn-primary">
+										Entrar
+									</button>
+								</fieldset>
+								
+							</form>
+						</div>
+ 
+ {%endif%}
+	  				</div>
+</div></header>
+   <section  class="main container" > 
+    <nav>
+<br><div class="container" >
+<ul class="nav nav-tabs  col-md-11" >
+  <li role="presentation" class="{{a| default('')}}"><a href="{{ path('directorio_homepage') }}"><i class="glyphicon  glyphicon-user"></i> Personas</a></li>
+  <li role="presentation"   class="{{b| default('')}}"><a href="{{ path('directorio_telefono') }}"><i class="glyphicon glyphicon-phone-alt"></i> Telefonos</a></li>
+   <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                         Provincia<span class="caret"></span> </a> <ul class="dropdown-menu" >
+                             
+                     <li><a href="{{ path('directorio_filtrar', { tipo:'Dop' }) }}">Dop</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Formacion' }) }}">Formacion</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Dia' }) }}">Dia</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Cuadros' }) }}">Cuadros</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Secretaria' }) }}">Secretaria</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Jefatura' }) }}">Jefatura</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Informatica' }) }}">Informatica</a></li>
+     <li><a href="{{ path('directorio_filtrar', { tipo:'Asesoria' }) }}">Asesoria Juridica</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Penal' }) }}">Penal</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Administracion' }) }}">Administracion</a></li>
+    <li><a href="{{ path('directorio_filtrar', { tipo:'Verificaciones' }) }}">Verificaciones</a></li>
+      <li><a href="{{ path('directorio_filtrar', { tipo:'Seguridad' }) }}">Seguridad</a></li>
+     <li><a href="{{ path('directorio_filtrar', { tipo:'AC' }) }}">Atencion/Ciudadano</a></li>
+     <li><a href="{{ path('directorio_filtrar', { tipo:'Familia' }) }}">Familia</a></li>
+       <li><a href="{{ path('directorio_filtrar', { tipo:'Clep' }) }}">Clep</a></li>
+         <li><a href="{{ path('directorio_filtrar', { tipo:'Contabilidad' }) }}">Contabilidad</a></li>
+           <li><a href="{{ path('directorio_filtrar', { tipo:'Recursos Humanos' }) }}">Recursos Humanos</a></li>
+             <li><a href="{{ path('directorio_filtrar', { tipo:'Puesto Direccion' }) }}">Puesto/Direccion</a></li> 
+                               
+                </li> </ul>  
+       
+       
+       
+       
+        <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                          Municipios<span class="caret"></span> </a> <ul class="dropdown-menu" > 
+                              
+                             <li><a href="{{ path('directorio_filtrar', { tipo:'Lisa' }) }}">Lisa</a></li>
+     <li><a href="{{ path('directorio_filtrar', { tipo:'Marianao' }) }}">Marianao</a></li>
+     <li><a href="{{ path('directorio_filtrar', { tipo:'Regla' }) }}">Regla</a></li>
+     <li><a href="{{ path('directorio_filtrar', { tipo:'Cerro' }) }}">Cerro</a></li>
+       <li><a href="{{ path('directorio_filtrar', { tipo:'Plaza' }) }}">Plaza</a></li>
+         <li><a href="{{ path('directorio_filtrar', { tipo:'Playa' }) }}">Playa</a></li>
+           <li><a href="{{ path('directorio_filtrar', { tipo:'Divico' }) }}">Divico</a></li>
+             <li><a href="{{ path('directorio_filtrar', { tipo:'Cotorro' }) }}">Cotorro</a></li>
+              <li><a href="{{ path('directorio_filtrar', { tipo:'10 de Octubre' }) }}">10 de Octubre</a></li>
+                <li><a href="{{ path('directorio_filtrar', { tipo:'Arroyo Naranjo' }) }}">Arroyo Naranjo</a></li>
+                <li><a href="{{ path('directorio_filtrar', { tipo:'Centro Habana' }) }}">Centro Habana</a></li>
+                 <li><a href="{{ path('directorio_filtrar', { tipo:'Habana Vieja' }) }}">Habana Vieja</a></li>
+                  <li><a href="{{ path('directorio_filtrar', { tipo:'Boyeros' }) }}">Boyeros</a></li>
+                  <li><a href="{{ path('directorio_filtrar', { tipo:'Habana del Este' }) }}">Habana Este</a></li>
+                   <li><a href="{{ path('directorio_filtrar', { tipo:'Guanabacoa' }) }}">Guanabacoa</a></li>
+                    <li><a href="{{ path('directorio_filtrar', { tipo:'San miguel' }) }}">San Miguel</a></li>  
+                               
+                </li> </ul> 
+</ul>
+    
+    
+    </nav>
+   
+    
+        <div class="container ">
+<br><br><br><br>
+<se
+</div>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        
+        <script src="{{ asset('public/js/jquery-1.11.3.min.js') }}"></script>
+            <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('public/js/jquery_002.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

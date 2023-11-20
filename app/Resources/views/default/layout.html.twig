@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+       <center> <title>{% block title %}PARTE UNO{% endblock %}</title></center>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" />
+               <link rel="stylesheet" href="{{ asset('public/css/miestilo.css') }}" />
+        {% endblock %}
+      
+    </head>
+    <body>
+        {% block body %}
+            <header>
+<div div class="container">
+<h1>DIRECTORIO FISCALIA PROVINCIAL</h1>
+
+
+</div></header>
+   <section  class="main container" > 
+    <nav>
+<br><div class="container" >
+<ul class="nav nav-tabs  col-md-11" >
+  <li role="presentation" class="active"><a href="#">Personas</a></li>
+  <li role="presentation"><a href="telefonos.html">Telefonos</a></li>
+</ul></nav>
+   
+    
+        <div class="container ">
+<br><br><br><br>
+<se
+</div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('public/js/jquery-1.11.3.min.js') }}"></script>
+            <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('public/js/bootbox.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

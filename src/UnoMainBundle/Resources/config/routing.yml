@@ -1,0 +1,28 @@
+
+
+uno_main_login:
+    path:     /
+    defaults: { _controller: UnoMainBundle:Security:login }
+
+uno_main_login_check:
+    path:     /circular/login_check
+    defaults: { _controller: UnoMainBundle:Security:loginCheck }
+uno_main_logout:
+    path:     /circular/logout
+    
+uno_main_login_user:
+    path:     /circular/user
+    defaults: { _controller: UnoMainBundle:Security:user }
+    
+uno_main_usuarios:
+    path:     /circular/usuarios
+    defaults: { _controller: UnoMainBundle:Security:usuarios } 
+    
+uno_main_useredit:
+    path:     /circular/useredit/{id}
+    defaults: { _controller: UnoMainBundle:Security:useredit } 
+    
+uno_main_delete:
+    path:     /circular/delete/{id}
+    defaults: { _controller: UnoMainBundle:Security:delete } 
+

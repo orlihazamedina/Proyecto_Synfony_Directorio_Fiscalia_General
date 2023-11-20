@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+       
+
+<div class="container ">
+
+
+</div>
+    
+<form  action="{{ path('directorio_buscar') }}" method="POST" >
+<div class="container">
+<div class="col-md-6">
+ 
+    <div class="input-group"  >
+      <input type="text" class="form-control" id="buscar" name="busco" placeholder="Buscar por Nombre,Usuario,Municipio" required>
+
+      <span class="input-group-btn">
+          <button  type="submit" class="btn btn-primary" ><i class="glyphicon glyphicon-search"></i> Buscar</button>
+           
+    
+    </div>
+    
+    
+    <br> <br> <br> <br> <br>
+    
+    {% if app.user.role is not defined %}
+    <div class="">
+     <img src="{{ asset('public/css/directorio_2.jpg') }}"  width="1000" height="300"   >
+                                    </div>
+    
+   {% endif %}
+</div>
+
+
+
+
+  
+
+
+
+
+<br><br><br><br>
+</div></div></form>
+{% if app.user.role is  defined and app.user.role=="ROLE_ADMIN"%}
+<div class="header col-md-12">
+                <h4 >Componente de Preparacion y Superacion</h4>
+               
+              </div><br><br><br>
+                  <div class="col-md-4">
+             <div class="information_inner">
+              	
+                 <span style="color: #00581E"><strong>Tecnica Profesional </strong></span>
+                <h1 class="bolded">{{uno}} </h1>
+               
+                <div class="infoprogress_green">
+                    
+                    <div class="greenprogress" style="width: {{uno*100/total}}%"></div>
+                </div>
+                    <center><small style="color: #00581E"><h5><strong>{{uno*100/total}}%  de  {{total}}  Actividades</strong></h5></small></center>
+                <div class="pull-right" id="work-progress1"><canvas style="display: inline-block; vertical-align: top; width: 47px; height: 20px;" width="47" height="20"></canvas></div>
+              </div></div>
+                  
+                     <div class="col-md-4">
+             <div class="information_inner">
+              	
+                 <span style="color: #c12e2a"> <strong>Defensa</strong> </span>
+                <h1 class="bolded">{{dos}}</h1>
+               
+                <div class="infoprogress_blue">
+                    
+                    <div class="blueprogress" style="width: {{dos*100/total}}% "></div>
+                </div>
+                    <center><small style="color: #c12e2a"><h5> <strong>{{dos*100/total}}%  de  {{total}}  Actividades</strong></h5></small></center>
+                <div class="pull-right" id="work-progress1"><canvas style="display: inline-block; vertical-align: top; width: 47px; height: 20px;" width="47" height="20"></canvas></div>
+              </div></div>
+                  
+     <div class="col-md-4">
+             <div class="information_inner">
+              	
+                 <span style="color: #0069d9"><strong>Economica</strong> </span>
+                <h1 class="bolded">{{tres}}</h1>
+                
+                <div class="infoprogress_red">
+                    
+                    <div class="redprogress" style="width:{{tres*100/total}}% "></div>
+                </div>
+                    <center><small style="color: #0069d9"><h5> <strong>{{tres*100/total}}%  de  {{total}}  Actividades</strong></h5></small></center>
+                <div class="pull-right" id="work-progress1"><canvas style="display: inline-block; vertical-align: top; width: 47px; height: 20px;" width="47" height="20"></canvas></div>
+              </div></div>
+            
+          <div class="col-md-4 col-lg-offset-2">
+             
+             <div class="information_inner">
+              	
+                 <span style="color: #FFB848"><strong>Direccion</strong> </span>
+                <h1 class="bolded">{{cuatro}}</h1>
+                
+                <div class="infoprogress_gray">
+                    
+                    <div class="grayprogress" style="width: {{cuatro*100/total}}% "></div>
+                </div>
+                    <center><small style="color: #FFB848"><h5> <strong>{{cuatro*100/total}}%  de  {{total}}  Actividades</strong></h5></small></center>
+                <div class="pull-right" id="work-progress1"><canvas style="display: inline-block; vertical-align: top; width: 47px; height: 20px;" width="47" height="20"></canvas></div>
+              </div></div>
+            
+                  
+                    <div class="col-md-4">
+             <div class="information_inner">
+              	
+                 <span style="color: #123e57"><strong>Politica Ideologica</strong> </span>
+                <h1 class="bolded">{{cinco}}</h1>
+                
+                <div class="infoprogress_green">
+                    
+                    <div class="greenprogress" style="width:{{cinco*100/total}}% "></div>
+                </div>
+                    <center><small style="color: #123e57"><h5> <strong>{{cinco*100/total}}%  de  {{total}}  Actividades</strong></h5></small></center>
+                <div class="pull-right" id="work-progress1"><canvas style="display: inline-block; vertical-align: top; width: 47px; height: 20px;" width="47" height="20"></canvas></div>
+              </div></div>
+        <br><br><br>      
+  <div class="header col-md-12">
+                <h4 >Acciones X Trabajadores</h4>
+               
+              </div><br><br><br>
+              
+    <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con 1 accion de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{conuno*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{conuno}}</div>
+</div>
+</div>
+</div>
+              
+               <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con 2 acciones de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{condos*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{condos}}</div>
+</div>
+</div>
+</div>
+               <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con 3 acciones de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{contres*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{contres}}</div>
+</div>
+</div>
+</div>
+               <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con 4 acciones de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{concuatro*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{concuatro}}</div>
+</div>
+</div>
+</div>
+               <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con 5 acciones de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{concinco*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{concinco}}</div>
+</div>
+</div>
+</div>
+               <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con 6 acciones de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{conseis*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{conseis}}</div>
+</div>
+</div>
+</div>
+               <div class="header col-md-7">     
+<div class="bd-example"><h5><strong>Trabajadores con mas de 6 acciones de capacitacion</strong></h5>
+<div class="progress">
+ <div class="progress-bar" role="progressbar" style="width: {{conmas*100/total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{conmas}}</div>
+</div>
+</div>
+</div>{%endif%}
+<!-- /input-group -
+                            
+                       
+                            </a>
+                        </div>
+                    </div>
+
+
+<!-- /.row --><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b</div></section>
+<br><br><br><br><br><br><br>
+{% endblock %}

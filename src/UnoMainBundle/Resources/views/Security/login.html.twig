@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    
+    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+{% endblock %}
+
+{% block body  %}
+	
+       
+        <div  class="container ">
+            
+            <div id="posi">
+                <div id="dino" >
+      <center>  <img src="{{ asset('public/images/logo_fgr_login.png') }}" width="120" height="120"   ></center>
+		
+               
+       <center><p style="color: aliceblue" >QUEJAS Y RECLAMACIONES </p></center></div>
+             
+       <form method="post" action="{{ path('uno_main_login_check') }}" class="login">
+       <div>    
+    <p>
+        <label for="login" style="color: #ffffff">Email:</label>
+      
+       <input type="text" id="username"  name="_username" value="" placeholder="{{ 'Usuario'|trans }}" required autofocus />
+    </p>
+
+    <p>
+      <label for="password" style="color: #ffffff">Password:</label>
+      <input type="password" id="password" class="form-control" name="_password" placeholder=" {{ 'Contraseña'|trans }}" required />
+    </p>
+     
+ <input type="hidden" name="_target_path" value="circular_main_ver" />
+    <p class="login-submit">
+      <button type="submit" class="login-button">Login</button>
+    </p></div>
+
+    {% if error %}
+         <div  class="alert-warning">
+             
+                    
+            <center>   <h5  style="color: #ffffff">      Usuario o Contraseña invalidos</h5></center>
+                                                </div>
+            {% endif %}
+  </form>
+        
+    </div></div></div>
+{% endblock %}
